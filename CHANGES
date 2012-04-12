@@ -1,4 +1,7 @@
 Revision history for Perl extension CGI::Snapp::Plugin::Redirect.
 
+1.01  Mon Apr  9 17:00:00 2012
+	- Change tests to match CGI::Snapp V 1.01 which does not create a logger by default.
+
 1.00  Mon Feb 28 17:00:00 2012
 	  - Original version

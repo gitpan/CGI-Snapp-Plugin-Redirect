@@ -6,6 +6,8 @@ use CGI;
 
 use CGI::Snapp::Plugin::RedirectTest;
 
+use Log::Handler;
+
 use Test::More;
 
 # -----------------------------------------------
@@ -13,9 +15,21 @@ use Test::More;
 sub test_a
 {
 	# Test 1. Don't redirect.
-	# Set debug so CGI::Snapp itself outputs log messages.
 
-	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(maxlevel => 'debug', send_output => 0);
+	my($logger) = Log::Handler -> new;
+
+	$logger -> add
+		(
+		 screen =>
+		 {
+			 maxlevel       => 'debug',
+			 message_layout => '%m',
+			 minlevel       => 'error',
+			 newline        => 1, # When running from the command line.
+		 }
+		);
+
+	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(logger => $logger, send_output => 0);
 	my($mode_source) = 'rm';
 	my($run_mode)    = 'first_rm';
 
@@ -37,10 +51,22 @@ sub test_a
 sub test_b
 {
 	# Test 2. Redirect during prerun phase.
-	# Set debug so CGI::Snapp itself outputs log messages.
+
+	my($logger) = Log::Handler -> new;
+
+	$logger -> add
+		(
+		 screen =>
+		 {
+			 maxlevel       => 'debug',
+			 message_layout => '%m',
+			 minlevel       => 'error',
+			 newline        => 1, # When running from the command line.
+		 }
+		);
 
 	my($test_name)   = 'test.prerun.mode';
-	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(maxlevel => 'debug', PARAMS => {$test_name => 1}, send_output => 0);
+	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(logger => $logger, PARAMS => {$test_name => 1}, send_output => 0);
 	my($mode_source) = 'rm';
 	my($run_mode)    = 'first_rm';
 
@@ -64,10 +90,22 @@ sub test_b
 sub test_c
 {
 	# Test 3. Redirect but don't set a status.
-	# Set debug so CGI::Snapp itself outputs log messages.
+
+	my($logger) = Log::Handler -> new;
+
+	$logger -> add
+		(
+		 screen =>
+		 {
+			 maxlevel       => 'debug',
+			 message_layout => '%m',
+			 minlevel       => 'error',
+			 newline        => 1, # When running from the command line.
+		 }
+		);
 
 	my($test_name)   = 'test.without.status';
-	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(maxlevel => 'debug', PARAMS => {$test_name => 1}, send_output => 0);
+	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(logger => $logger, PARAMS => {$test_name => 1}, send_output => 0);
 	my($mode_source) = 'rm';
 	my($run_mode)    = 'first_rm';
 
@@ -92,10 +130,22 @@ sub test_c
 sub test_d
 {
 	# Test 4. Redirect and set a status.
-	# Set debug so CGI::Snapp itself outputs log messages.
+
+	my($logger) = Log::Handler -> new;
+
+	$logger -> add
+		(
+		 screen =>
+		 {
+			 maxlevel       => 'debug',
+			 message_layout => '%m',
+			 minlevel       => 'error',
+			 newline        => 1, # When running from the command line.
+		 }
+		);
 
 	my($test_name)   = 'test.with.status';
-	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(maxlevel => 'debug', PARAMS => {$test_name => 1}, send_output => 0);
+	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(logger => $logger, PARAMS => {$test_name => 1}, send_output => 0);
 	my($mode_source) = 'rm';
 	my($run_mode)    = 'first_rm';
 
@@ -120,10 +170,22 @@ sub test_d
 sub test_e
 {
 	# Test 5. Redirect to another URL on the same server.
-	# Set debug so CGI::Snapp itself outputs log messages.
+
+	my($logger) = Log::Handler -> new;
+
+	$logger -> add
+		(
+		 screen =>
+		 {
+			 maxlevel       => 'debug',
+			 message_layout => '%m',
+			 minlevel       => 'error',
+			 newline        => 1, # When running from the command line.
+		 }
+		);
 
 	my($test_name)   = 'test.local.url';
-	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(maxlevel => 'debug', PARAMS => {$test_name => 1}, send_output => 0);
+	my($app)         = CGI::Snapp::Plugin::RedirectTest -> new(logger => $logger, PARAMS => {$test_name => 1}, send_output => 0);
 	my($mode_source) = 'rm';
 	my($run_mode)    = 'first_rm';
 

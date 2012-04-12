@@ -8,7 +8,7 @@ use vars qw(@EXPORT @ISA);
 @EXPORT = ('redirect');
 @ISA    = ('Exporter');
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # --------------------------------------------------
 
@@ -159,6 +159,8 @@ L<CGI::Application>
 The following are all part of this set of distros:
 
 L<CGI::Snapp> - A almost back-compat fork of CGI::Application
+
+L<CGI::Snapp::Dispatch> - Dispatch requests to CGI::Snapp-based objects
 
 L<CGI::Snapp::Plugin::Forward> - A plugin for CGI::Snapp to switch cleanly to another run mode within the same app
 

@@ -28,8 +28,9 @@
       "runtime" : {
          "requires" : {
             "CGI" : "3.59",
-            "CGI::Snapp" : "1",
+            "CGI::Snapp" : "1.01",
             "Exporter" : "5.567",
+            "Log::Handler" : "0.75",
             "parent" : "0",
             "strict" : "1.03",
             "vars" : "1.01",
@@ -40,7 +41,7 @@
    "provides" : {
       "CGI::Snapp::Plugin::Redirect" : {
          "file" : "lib/CGI/Snapp/Plugin/Redirect.pm",
-         "version" : "1.00"
+         "version" : "1.01"
       }
    },
    "release_status" : "stable",
@@ -49,5 +50,5 @@
          "http://opensource.org/licenses/artistic-license.php"
       ]
    },
-   "version" : "1.00"
+   "version" : "1.01"
 }
